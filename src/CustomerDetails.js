@@ -8,37 +8,43 @@ export default class CustomerDetails extends Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        this.getCustomerDetails(this.props.val)
+    }
+
     componentDidUpdate(prevProps) {
         if(this.props.val !== prevProps.val) {
             this.getCustomerDetails(this.props.val)
         }
     }
-
+    
     getCustomerDetails(id) {
-        axios.get('assets/samplejson/customer' +id+'.json').then(res => {
-            this.setState({CustomerDetails: res})
+        console.log(id)
+        axios.get('assets/samplejson/customer' +id+ '.json').then(res => {
+            console.log(res)           
+            this.setState({customerDetail: res})
         })
     }
 
     render() {
-        if(!this.state.customerDetails)
+        if(!this.state.customerDetail)
             return (<p>Loading data</p>)
-        return (<div className="customerdetails">
+        return (<div className="customerdetail">
             <Panel bsStyle="info" className="centeralign">
                 <Panel.Heading>
-                    <Panel.Title componentClass="h3">{this.state.customerDetails.data.name}</Panel.Title>
+                    <Panel.Title componentClass="h3">{this.state.customerDetail.data.name}</Panel.Title>
                 </Panel.Heading>
-                <Panel.body>
-                    <p>Name : {this.state.customerDetails.data.name}</p>
-                    <p>Email : {this.state.customerDetails.data.email}</p>
-                    <p>Phone : {this.state.customerDetails.data.phone}</p>
-                    <p>City : {this.state.customerDetails.data.city}</p>
-                    <p>State : {this.state.customerDetails.data.state}</p>
-                    <p>Country : {this.state.customerDetails.data.country}</p>
-                    <p>Organization : {this.state.customerDetails.data.organization}</p>
-                    <p>Job Profile : {this.state.customerDetails.data.jobProfile}</p>
-                    <p>Addition Info : {this.state.customerDetails.data.additionInfo}</p>
-                </Panel.body>
+                <Panel.Body>
+                    <p>Name : {this.state.customerDetail.data.name}</p>
+                    <p>Email : {this.state.customerDetail.data.email}</p>
+                    <p>Phone : {this.state.customerDetail.data.phone}</p>
+                    <p>City : {this.state.customerDetail.data.city}</p>
+                    <p>State : {this.state.customerDetail.data.state}</p>
+                    <p>Country : {this.state.customerDetail.data.country}</p>
+                    <p>Organization : {this.state.customerDetail.data.organization}</p>
+                    <p>Job Profile : {this.state.customerDetail.data.jobProfile}</p>
+                    <p>Addition Info : {this.state.customerDetail.data.additionInfo}</p>
+                </Panel.Body>
             </Panel>
         </div>)
     }

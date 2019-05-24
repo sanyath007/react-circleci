@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { getTodos } from '../../redux/selectors';
+// import { getTodos } from '../../redux/selectors';
 
 const TodoList = ({ todos }) => (
   <ul className="todo-list">

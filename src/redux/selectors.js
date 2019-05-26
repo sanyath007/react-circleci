@@ -1,4 +1,4 @@
-import VisibilityFilters from "../components/VisibilityFilters";
+// import VisibilityFilters from "../components/VisibilityFilters";
 import { VISIBILITY_FILTERS } from "../constants";
 
 export const getTodoState = store => store.todos;
